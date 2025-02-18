@@ -35,7 +35,8 @@ def dibujar_punto(fig, x, y, nombre=None):
         mode='markers+text',
         text=[nombre] if nombre else None,
         textposition='top center',
-        marker=dict(size=10)
+        marker=dict(size=15),  # Tamaño del punto
+        textfont=dict(size=40)  # Tamaño de la etiqueta
     ))
 
 def dibujar_segmento(fig, x1, y1, x2, y2):
@@ -212,9 +213,9 @@ def invocar_descripcion(nombre, df):
     return resultado.iloc[0] if not resultado.empty else "Proposición no encontrada"
 
 def main():
-    st.title("Elementos de Euclides - Proposición 16")
+    st.title("Elementos de Euclides - Proposición I.VI")
 
-    st.markdown(f"## {invocar_descripcion("Proposición I.16", proposiciones_euclides)}")
+    st.markdown(f"## {invocar_descripcion("Proposición I.XVI", proposiciones_euclides)}")
     
     # Cargar datos desde Excel
     df_pasos = cargar_pasos_excel()
@@ -272,7 +273,7 @@ def main():
         justificacion_actual = paso_actual["justificacion"]
 
         # Expresión regular para detectar "Proposición X.Y"
-        match = re.search(r"Proposición I\.\d+", justificacion_actual)
+        match = re.search(r"Proposición\s+([IVXLCDM]+)\.([IVXLCDM]+)", justificacion_actual)
 
         if match:
             nombre_proposicion = match.group()  # Extrae el nombre completo "Proposición I.12"
