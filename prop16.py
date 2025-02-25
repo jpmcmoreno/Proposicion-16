@@ -213,7 +213,7 @@ def invocar_descripcion(nombre, df):
     return resultado.iloc[0] if not resultado.empty else "Proposición no encontrada"
 
 def main():
-    st.title("Elementos de Euclides - Proposición I.VI")
+    st.title("Elementos de Euclides - Proposición I.XVI")
 
     st.markdown(f"## {invocar_descripcion("Proposición I.XVI", proposiciones_euclides)}")
     
